@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { /* faCheckSquare, faCoffee */ fas } from '@fortawesome/free-solid-svg-icons'
-import '../src/style/index.scss'
+import '../src/styles/index.scss'
 
 library.add(fas)
 export const parameters = {
