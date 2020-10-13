@@ -1,12 +1,12 @@
 {
   "name": "cyd-ant",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React components library",
-  "author": "cyd",
+  "author": "chen yd",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "type": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "keywords": [
     "Component",
@@ -28,18 +28,16 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@types/classnames": "^2.2.10",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "classnames": "^2.2.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "classnames": "^2.2.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "clean": "rimraf ./dist",
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
     "build": "npm run clean && npm run build-ts && npm run build-css",
@@ -47,7 +45,12 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "prepublish": "npm run build"
+    "prepublish": "npm run lint && npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -72,12 +75,21 @@
     "@storybook/node-logger": "^6.0.26",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.26",
+    "@types/classnames": "^2.2.10",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "husky": "^4.3.0",
     "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
+    "react-scripts": "3.4.3",
     "rimraf": "^3.0.2",
-    "sass": "^1.27.0"
+    "sass": "^1.27.0",
+    "typescript": "~3.7.2"
   }
 }
